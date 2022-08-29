@@ -1,3 +1,11 @@
 <h1>
     Instagram / <%= title %>
 </h1>
+
+<form action="/users/create-session" method="post">
+    <input type="text" name="username" placeholder="username" required>
+    <input type="password" name="password" placeholder="password" required>
+    <input type="submit">
+</form>
+
+<h5>Not registered ? <a href="/users/sign-up"><button>sign-up </button> </a></h5>
