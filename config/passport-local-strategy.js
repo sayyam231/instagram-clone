@@ -29,4 +29,18 @@ passport.deserializeUser((id, done) => {
         done(null, user);
     });
 });
+// check for user is Authenticated
+passport.checkAuthentication = function (req,res,next) {
+    if (req.isAuthenticated()) {
+        return next();
+    }
+    return res.redirect('/');
+}
+// set authenticated user details to local for view
+passport.setAuthenticatedUser = function (req, res, next) {
+    if (req.isAuthenticated()) {
+        res.locals.user = req.user;
+    }
+    next();
+}
 module.exports = passport;

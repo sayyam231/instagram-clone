@@ -1,6 +1,9 @@
 const User = require("../models/user");
 
 module.exports.signUp = (req, res) => {
+    if (req.isAuthenticated()) {
+        return res.redirect('/users/profile');
+    }
     return res.render('sign-up', {
         title : "Sign-up"
     });
@@ -68,3 +71,14 @@ module.exports.createSession = (req, res) => {
         return res.redirect('back');
     })
 };
+
+// sign out destroy session
+module.exports.destroySession = (req, res)=>{
+    req.logout((err) => {
+        if (err) {
+            console.log("Error in logging out");
+            return res.redirect('back');
+        }
+        return res.redirect('/');
+    })
+}
