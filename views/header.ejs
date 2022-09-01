@@ -1,13 +1,33 @@
 <% if (locals.user) { %>
-    <nav class="navbar navbar-expand-lg bg-light ">
-        <div class="container-fluid ">
+    <nav class="sticky top-0 right-0 left-0 bg-white flex w-100 border-b-2 border-gray-200 shadow-md">
+        <div class=" my-3 ml-3 w-1/2 md:w-1/3 md:text-center ">
     
-            <a class="navbar-brand " href="#">Navbar</a>
+            <a class="ml-3"  href="/"><img src="/images/logo.png" class=" scale-50 sm:scale-75  aspect-video mx-auto" alt=""></a>
     
         </div>
+        <div class="hidden my-3  md:inline md:w-1/3 text-center">
+           <form action="" class="mb-0 leading-loose pt-1">
+            <input type="text" class="mt-1 h-100 rounded pl-1 bg-gray-200 shadow-inner indent-1" name="user" placeholder="Search">
+           </form>
         </div>
+        <div class="w-1/2  my-3 md:w-1/3 flex align-middle justify-evenly">
+            <div class="mx-2 pt-6 sm:pt-4 text-lg">
+                <a href="/" class=""><i class="fa fa-solid fa-home"></i></a>
+            </div>
+            <div class="mx-2 pt-6 sm:pt-4 text-lg">
+                <a href="/" class="text-blue-400"><i class=" fa-brands fa-facebook-messenger"></i></a>
+            </div>
+            <div class="mx-2 pt-6 sm:pt-4 text-lg">
+                <a href="/" class=""><i class="fa-regular fa-square-plus"></i></a>
+            </div>
+            <div class="mx-2 pt-6 sm:pt-4 text-lg">
+                <a href="/" class=""><i class="fa-regular fa-heart"></i></a>
+            </div>
+            <div class="mx-2 pt-6 sm:pt-4 text-lg">
+                <a href="/" class=""><i class="fa-regular fa-user"></i></a>
+            </div>
+        </div>
+        
     </nav>
-<% }else{ %>
-    <h1>header</h1>
-<% } %> 
+<% } %>
 
