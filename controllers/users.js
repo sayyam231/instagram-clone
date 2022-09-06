@@ -66,7 +66,7 @@ module.exports.createSession = (req, res) => {
             return;
         }
         if (user) {
-            return res.redirect('/users/profile');
+            return res.redirect('/');
         }
         return res.redirect('back');
     })

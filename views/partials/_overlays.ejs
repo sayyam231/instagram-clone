@@ -1,0 +1,14 @@
+
+<!-- For adding new post -->
+<div class="absolute hidden  bg-gray-700/50 h-full w-full z-20 text-center" id="addost">
+    <button class="fixed text-white right-0 text-lg cursor-pointer p-3" onclick="closeOverlay()"><i class="fa-solid fa-xmark"></i></button>
+    <div class="fixed min-h-fit bg-white h-1/2 w-11/12 inset-0 sm:w-3/4 mx-auto md:w-2/5 mt-20 rounded-lg shadow-xl text-center flex justify-center items-center">
+        <form action="/post/create" class=" w-3/4 mx-auto " method="post">
+            <div class="w-100">ADD A Post</div>
+            <input    class="border-2 p-1 my-2  rounded-lg hover:ring-1 border-gray-200 bg-gray-100  shadow-inner w-full" type="text" name="link" placeholder="link" required><br>
+            <textarea class="border-2 p-1 my-2 rounded-lg hover:ring-1 border-gray-200 bg-gray-100  shadow-inner w-full" name="caption" id="" cols="1" rows="2" maxlength="50" placeholder="Enter your thoughts about the picture..."></textarea><br>
+            <input    class="border-2 p-1 my-2 rounded-lg hover:ring-1 border-sky-200 bg-sky-100  shadow-inner w-full" type="submit" value="Share" onclick="closeOverlay()">
+        </form>
+    </div>
+ 
+</div>

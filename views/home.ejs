@@ -1,31 +1,30 @@
-<div class="flex flex-row items-center mx-auto w-11/12 p-2 mt-20 sm:w-3/5 md:w-2/4 xl:w-5/12 sm:mt-40 xl:mt-20" >
-    <div class="w-1/2 mr-1 "><img src="/images/home.jpg"  alt="" class=""></div>
-    <div class="w-1/2 border-2 border-slate-200 text-center shadow-xl bg-white">
-        <div class="p-4 ">
-            <h2 class="text-md font-semibold mb-3 sm:text-xl md:text-3xl  xl:text-4xl xl:my-5 " style="font-family:'Pacifico', cursive;"><img src="/images/logo.png" class=" mt-2 aspect-video mx-auto" alt=""></h2>
-            <form action="/users/create-session" method="post">
-                <input class="w-11/12 mt-1 h-5 placeholder:text-sm placeholder:font-thin border-2 rounded pl-1 py-3  focus:outline-none focus:ring-1 focus:ring-sky-500" type="text" name="username" placeholder="Username" required><br>
-                <input class="w-11/12 mt-1 h-5 placeholder:text-sm placeholder:font-thin border-2 rounded pl-1 py-3 focus:outline-none focus:ring-1 focus:ring-sky-500" type="password" name="password" placeholder="Password" required><br>
-                <input class="w-11/12 mt-1 pb-5 h-5 text-sm border-2 rounded bg-sky-200 hover:bg-sky-500" type="submit" value="Log In">
-            </form>
-            <p class="text-xs text-neutral-500 font-semibold xl:my-5">OR</p>
-            <div class="mt-2">
-
-                <a href="#" class="text-decoration-none text-xs text-blue-800 font-semibold"><i class="fa fa-brands fa-facebook"></i> Log in With Facebook</a><br>
-            </div>
-            <div class="mt-2">
-
-                <a href="#" class="text-decoration-none text-xs ">Forgot Password?</a>
-            </div>
-        </div>
-        
-        <div class="">
-            <div class="text-decoration-none text-xs p-3"> Don't have an account? <a href="/users/sign-up" class="text-sky-500 font-bold">Sign up </a>  </div>
-            
-        </div>
+<% if (locals.user) { %>
+    <div class="mx-auto w-full sm:w-7/12 md:w-5/12 lg:w-4/12  mt-4 p-1 ">
+        <% for( post of posts ) { %>
+            <figure class="bg-white rounded-lg border-2 border-gray-200 shadow-2xl m-2">
+                <div class="border-b-2 border-gray-200 p-1"><%= post.user.name %> </div>
+                <img src="<%=post.post%>" alt="" class="h-96 w-full mx-auto">
+                <!-- todo maintian the caption -->
+                <div class="p-1 w-full"><p class="break-words w-full"><%= post.caption %></p> </div>
+                <div><% for(comment of post.comment) { %>
+                    <small><%= comment.user.name %> </small>
+                    <p><%= comment.comment %>  </p>
+                <% } %></div>
+                <form action="/comment/create" class="w-full flex  p-1 mb-0 border-t-2 border-gray-300" method="post">
+                    <input type="text" name="comment" required class="w-9/12 px-3 " placeholder="Add a comment..">
+                    <input type="hidden" name="post" value="<%= post._id %>">
+                    <input type="submit" value="Post" class="w-3/12">
+                </form>
+            </figure>
+        <% } %>
     </div>
-</div>
+    
 
+<% }else{ %>
+
+    <%- include('partials/_sign_in') %> 
+
+<% } %>
 
 
 
