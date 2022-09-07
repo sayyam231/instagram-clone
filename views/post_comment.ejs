@@ -1,0 +1,28 @@
+<a href="/" class="absolute right-0">cross</a>
+<div class="absolute w-11/12 h-96 mx-auto bg-white flex inset-0 top-36 shadow-2xl">
+    <div class="w-1/2 h-full"><img src="<%= posts.post %>" class="h-full mx-auto" alt=""></div>
+    <div class="w-1/2 h-full">
+        <div class="border-b-2 h-1/6 border-gray-200 p-1 flex items-center justify-between ">
+            <div class="flex items-center">
+                <div class=""><img
+                        src="https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile-thumbnail.png"
+                        class="h-10 w-10" alt=""></div>
+                <div class="ml-2 font-semibold">
+                    <%= post.user.username %>
+                </div>
+            </div>
+            <div class="text-lg mr-3 cursor-pointer">
+                <button onclick="btnclick('postOption')"><i class="fa-solid fa-ellipsis"></i></button>
+            </div>
+        </div>
+        <div class="w-100 h-3/6 overflow-y-scroll">
+            <% for( comment of posts.comment ) { %>
+            
+                <div class="">
+                    <%= comment.comment %>
+                </div>
+            <% } %>
+        </div>
+        <div class="h-2/6">kfgg</div>
+    </div>
+</div>

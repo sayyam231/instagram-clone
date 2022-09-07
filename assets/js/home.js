@@ -6,11 +6,10 @@ function btnclick(e) {
         x.style.display = "none";
     }
 }
-function closeOverlay() {
-    var x = document.getElementById('addost');
+function closeOverlay(e) {
+    var x = document.getElementById(e);
     x.style.display = 'none';
 }
-
 // to hide back the "DROPDOWN" div if clicked outside it
 document.addEventListener('mouseup', function (e) {
     var container = document.getElementById('dropdown');

@@ -11,3 +11,24 @@ module.exports.create = function (req, res) {
         return res.redirect('/');
     })
 }
+
+module.exports.showComment = function (req, res) {
+    Post.findById(req.params.id).sort({ $natural: -1 })
+        .populate('user')
+        .populate({
+            path: 'comment',
+            populate: 'user'
+        })
+        .exec(function (err, post) {
+            if (err) {
+                console.log('err in finding the post');
+            }
+            
+            return res.render('post_comment', {
+                    title: "Instagram",
+                    posts: post,
+                   
+            });
+            
+        });
+}
