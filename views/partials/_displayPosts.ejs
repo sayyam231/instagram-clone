@@ -1,0 +1,60 @@
+<div class="mx-auto w-full sm:w-7/12 md:w-5/12 lg:w-4/12  mt-4 p-1 ">
+    <% for( post of posts ) { %>
+        <figure class="bg-white rounded-lg border-2 border-gray-200 shadow-2xl m-2">
+            <!-- header of post -->
+            <div class="border-b-2 border-gray-200 p-1 flex items-center justify-between ">
+                <div class="flex items-center">
+                    <div class=""><img
+                            src="https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile-thumbnail.png"
+                            class="h-10 w-10" alt=""></div>
+                    <div class="ml-2 font-semibold">
+                        <%= post.user.username %>
+                    </div>
+                </div>
+                <div class="text-lg mr-3 cursor-pointer">
+                    <button onclick="btnclick('postOption')"><i class="fa-solid fa-ellipsis"></i></button>
+                </div>
+            </div>
+            <!-- post image -->
+            <img src="<%=post.post%>" alt="" class="h-96 w-full mx-auto">
+            <!-- Like comment SHare save -->
+            <div class="flex items-center p-1 justify-between">
+                <div class="">
+                    <span class="mx-1 cursor-pointer font-bold hover:text-gray-400"><i
+                            class="fa-regular fa-heart text-xl "></i></span>
+                    <span class="mx-1 cursor-pointer font-bold hover:text-gray-400"><i
+                            class="fa-regular fa-comment text-xl "></i></span>
+                    <span class="mx-1 cursor-pointer font-bold hover:text-gray-400"><i
+                            class="fa-regular fa-paper-plane text-xl "></i></span>
+                </div>
+                <div class="">
+                    <span class="mx-1 cursor-pointer font-bold hover:text-gray-400"><i
+                            class="fa-regular fa-bookmark text-xl"></i></span>
+                </div>
+            </div>
+            <!-- Count of likes -->
+            <div class="font-bold text-xs pl-1 ml-1">X no of likes</div>
+            <!-- todo maintian the caption -->
+            <div class="p-1 ml-1 w-full">
+                <p class="break-words w-full">
+                    <%= post.caption %>
+                </p>
+            </div>
+            <!-- Count of comments -->
+            <div>
+                <% if (post.comment.length=='0' ) { %>
+                    <small class="pl-1 ml-1 text-gray-400 text-semibold">Be the first to comment</small>
+                    <% }else{ %>
+                        <small class="pl-1 ml-1 text-gray-500 text-semibold"><button
+                                onclick="btnclick('<%=post.id %>')"> View all <%= post.comment.length %> comments
+                            </button></small>
+                        <%} %>
+            </div>
+            <form action="/comment/create" class="w-full flex  p-1 mb-0 border-t-2 border-gray-300" method="post">
+                <input type="text" name="comment" required class="w-9/12 px-3 " placeholder="Add a comment..">
+                <input type="hidden" name="post" value="<%= post._id %>">
+                <input type="submit" value="Post" class="w-3/12">
+            </form>
+        </figure>
+        <% } %>
+</div>
