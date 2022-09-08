@@ -5,13 +5,13 @@
                 class="fa-solid fa-xmark"></i></button>
         <!-- LayOver Main content -->
         <div
-            class="rounded shadow-2xl fixed min-h-fit h-4/6  mx-auto inset-0 border-2 lg:w-8/12 bg-white border-gray-400 w-11/12 top-20 flex">
+            class="rounded shadow-2xl fixed min-h-fit h-2/3   mx-auto inset-0 border-2 lg:w-8/12 bg-white border-gray-400 w-11/12 top-20 flex">
             <!-- Post Image -->
-            <div class="w-1/2 md:w-2/5 bg-black "><img src="<%= post.post %> " alt="" class=" h-full mx-auto"></div>
+            <div class="  hidden sm:block sm:w-1/2 md:w-2/5 bg-black "><img src="<%= post.post %> " alt="" class=" h-full mx-auto"></div>
             <!-- Comment Section -->
-            <div class="w-1/2 md:w-3/5">
+            <div class=" w-full h-full sm:w-1/2 md:w-3/5">
                 <!-- Header -->
-                <div class="border-b-2 border-gray-200 p-1 flex items-center justify-between ">
+                <div class="border-b-2 border-gray-200 p-1 h-1/6 flex items-center justify-between ">
                     <div class="flex items-center h-1/6">
                         <div class=""><img
                                 src="https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile-thumbnail.png"
@@ -27,29 +27,30 @@
                 <!-- Main section -->
                 <div class="h-4/6 overflow-y-auto">
                     <% for( comment of post.comment) { %>
-                        <div class="w-full flex items-center my-1">
-                            <div class="w-1/12"><img
+                        <div class="w-full relative flex items-center my-1 p-1">
+                            <div class="w-1/12 self-start"><img
                                     src="https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile-thumbnail.png"
                                     class="h-7 w-7 mx-auto" alt="">
                             </div>
-                            <div class="w-11/12">
+                            <div class="group w-10/12 text-justify self-start">
                                 <span class="font-semibold">
                                     <%= comment.user.username %>
                                 </span>
                                 <span class="ml-1">
                                     <%= comment.comment %>
                                 </span>
-                                <!-- Additional functionality -->
-                                <% if (locals.user.id == comment.user.id) { %>
-                                    <a href="/comment/destroy/<%= comment.id %>">Delete</a>
-                                <% } %>
-                                
+                                <div class=" text-gray-600 font-semibold">
+                                    <small>x Likes </small>
+                                    <small>Reply </small>
+                                    <button class="group-hover:inline-block hidden" onclick="btnclick('<%=comment.id%>')" ><small class="align-baseline"> <i class="fa-solid fa-ellipsis"></i></small></button>
+                                </div>   
                             </div>
+                            <div class="w-1/12 p-3 self-start text-sm hover:text-gray-400"><i class="fa-regular fa-heart"></i></div>
                         </div>
-                        <% } %>
+                    <% } %>
                 </div>
                 <!-- bottom section -->
-                <div class="h-1/6 flex-col items-center">
+                <div class="h-1/6 flex-col items-center justify-around border-t-2 border-gray-100">
                     <!-- Like share comment Save -->
                     <div class="flex items-center p-1 justify-between h-1/2">
                         <div class="">
@@ -66,15 +67,47 @@
                         </div>
                     </div>
                     <!-- Post a new Comment -->
-                    <form action="/comment/create"
-                        class="w-full h-1/2 flex items-center  p-1 mb-0 border-t-2 border-gray-300" method="post">
-                        <input type="text" name="comment" required class="w-9/12 px-3 " placeholder="Add a comment.."
-                            maxlength="100">
-                        <input type="hidden" name="post" value="<%= post._id %>">
-                        <input type="submit" value="Post" class="w-3/12">
-                    </form>
+                    <div class="h-1/2 bottom-0">
+                        <form action="/comment/create" class="w-full flex items-center p-1 mb-0 border-t-2 border-gray-300" method="post">
+                            <input type="text" name="comment" required class="w-9/12 px-3 h-full " placeholder="Add a comment.."
+                                maxlength="100">
+                            <input type="hidden" name="post" value="<%= post._id %>">
+                            <input type="submit" value="Post" class="w-3/12">
+                        </form>
+                    </div>
+                    
                 </div>
             </div>
         </div>
     </div>
+<% } %>
+<!-- Display more option for each comment -->
+<% for( post of posts) { %>
+    <% for( comment of post.comment) { %>
+        <div class="absolute hidden z-40 top-0 h-full w-full bg-gray-600/50" id="<%=comment.id%>">
+            <button class="fixed text-white right-0 text-lg cursor-pointer p-3" onclick="closeOverlay('<%=comment.id%>')"><i
+                    class="fa-solid fa-xmark"></i></button>
+            <div
+                class="fixed min-h-fit  bg-white w-11/12 inset-0 sm:w-3/4 mx-auto md:w-1/4 mt-20 rounded-lg shadow-xl text-center flex-col justify-center items-center">
+                <!-- TODO add more option here later -->
+                <% if (locals.user.id==comment.user.id) { %>
+                    <a href="/comment/destroy/<%=comment.id%>">
+                        <div class="border-b-2 py-2 border-gray-400 text-rose-600 font-semibold">Delete</div>
+                    </a>
+                    <% } %>
+                        <a href="">
+                            <div class="border-b-2 py-2 border-gray-400">report</div>
+                        </a>
+                        <a href="">
+                            <div class="border-b-2 py-2 border-gray-400">report</div>
+                        </a>
+                        <a href="">
+                            <div class="border-b-2 py-2 border-gray-400">report</div>
+                        </a>
+                        <a href="">
+                            <div class="border-b-2 py-2 border-gray-400">report</div>
+                        </a>
+            </div>
+        </div>
+    <% } %>
 <% } %>
