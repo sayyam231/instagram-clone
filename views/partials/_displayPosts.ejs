@@ -12,7 +12,8 @@
                     </div>
                 </div>
                 <div class="text-lg mr-3 cursor-pointer">
-                    <button onclick="btnclick('postOption')"><i class="fa-solid fa-ellipsis"></i></button>
+                    <button onclick="btnclick('<%=post.id%>option')"><i class="fa-solid fa-ellipsis"></i></button>
+                    <%- include('_displayPostOptions') %> 
                 </div>
             </div>
             <!-- post image -->

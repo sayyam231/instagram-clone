@@ -1,4 +1,5 @@
 const Post = require('../models/post');
+const Comment = require('../models/comments');
 module.exports.create = function (req, res) {
     Post.create({
         post: req.body.link,
@@ -31,4 +32,17 @@ module.exports.showComment = function (req, res) {
             });
             
         });
+}
+
+module.exports.destroy = function (req, res) {
+    Post.findById(req.params.id, function (err, post) {
+        if (post.user = req.user.id) {
+            post.remove();
+            Comment.deleteMany({ post: req.params.id }, (err) => {
+                res.redirect('/');
+            });
+        } else {
+            return res.redirect('back');
+        }
+    });
 }

@@ -1,0 +1,16 @@
+<!-- more option for particular post -->
+<div class="absolute hidden left-0 top-0 h-full w-full bg-gray-600/50" id="<%=post.id%>option">
+    <button class="fixed text-white right-0 text-lg cursor-pointer p-3" onclick="closeOverlay('<%=post.id%>option')"><i
+            class="fa-solid fa-xmark"></i></button>
+    <div
+        class="fixed min-h-fit  bg-white w-11/12 inset-0 sm:w-3/4 mx-auto md:w-1/4 mt-20 rounded-lg shadow-xl text-center flex-col justify-center items-center">
+        <!-- TODO add more option here later -->
+        <% if (user.id == post.user.id) { %>
+            <a href="/post/destroy/<%=post.id%>"><div class="border-b-2 py-2 border-gray-400 text-rose-600 font-semibold">Delete</div></a>
+        <% } %>
+        <a href=""><div class="border-b-2 py-2 border-gray-400">report</div></a>
+        <a href=""><div class="border-b-2 py-2 border-gray-400">report</div></a>
+        <a href=""><div class="border-b-2 py-2 border-gray-400">report</div></a>
+        <a href=""><div class="border-b-2 py-2 border-gray-400">report</div></a>
+    </div>
+</div>
