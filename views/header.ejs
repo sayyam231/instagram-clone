@@ -30,7 +30,7 @@
             <div class="mx-2 text-lg cursor-pointer" onclick="btnclick('dropdown')" >
                 <i class="fa-regular fa-user"></i>
                 <div class="absolute hidden z-10 mt-1  w-5/12 sm:w-1/4 md:w-1/5 border-2 border-gray-200 rounded-md shadow-md bg-white right-1" id="dropdown">
-                    <a href="/users/profile"><div class="pl-2 text-gray-500 hover:bg-gray-100 pt-2 pb-1"><i class="fa-regular fa-circle-user"></i> Profile</div></a>
+                    <a href="/users/profile/<%=locals.user.id%>"><div class="pl-2 text-gray-500 hover:bg-gray-100 pt-2 pb-1"><i class="fa-regular fa-circle-user"></i> Profile</div></a>
                     <a href=""><div class="pl-2 text-gray-500 hover:bg-gray-100 py-1"><i class="fa-regular fa-bookmark"></i> Saved</div></a>
                     <a href=""><div class="pl-2 text-gray-500 hover:bg-gray-100 py-1"><i class="fa-solid fa-gear"></i> Settings</div></a>
                     <a href=""><div class="pl-2 text-gray-500 hover:bg-gray-100 py-2"><i class="fa-solid fa-repeat"></i> Settings</div></a>

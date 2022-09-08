@@ -3,14 +3,16 @@
         <figure class="bg-white rounded-lg border-2 border-gray-200 shadow-2xl m-2">
             <!-- header of post -->
             <div class="border-b-2 border-gray-200 p-1 flex items-center justify-between ">
-                <div class="flex items-center">
-                    <div class=""><img
-                            src="https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile-thumbnail.png"
-                            class="h-10 w-10" alt=""></div>
-                    <div class="ml-2 font-semibold">
-                        <%= post.user.username %>
+                <a href="/users/profile/<%=post.user.id%>">
+                    <div class="flex items-center">
+                        <div class=""><img
+                                src="https://w7.pngwing.com/pngs/831/88/png-transparent-user-profile-computer-icons-user-interface-mystique-miscellaneous-user-interface-design-smile-thumbnail.png"
+                                class="h-10 w-10" alt=""></div>
+                        <div class="ml-2 font-semibold">
+                            <%= post.user.username %>
+                        </div>
                     </div>
-                </div>
+                </a>
                 <div class="text-lg mr-3 cursor-pointer">
                     <button onclick="btnclick('<%=post.id%>option')"><i class="fa-solid fa-ellipsis"></i></button>
                     <%- include('_displayPostOptions') %> 

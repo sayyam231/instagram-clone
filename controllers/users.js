@@ -42,7 +42,7 @@ module.exports.create = function (req, res) {
 };
 module.exports.profile = (req, res) => {
 
-    User.findById(req.user._id, (err, user) => {
+    User.findById(req.params.id, (err, user) => {
         if (err) {
             console.log("Error in finding the user");
             return;
